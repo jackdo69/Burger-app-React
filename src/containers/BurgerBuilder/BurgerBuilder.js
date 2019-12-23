@@ -28,9 +28,7 @@ class BurgerBuilder extends Component {
         return sum > 0
     }
 
-    componentDidMount() {
-        console.log('component did mount');
-        
+    componentDidMount() {        
         this.props.onInitIngredients();
     }
 
@@ -95,9 +93,9 @@ class BurgerBuilder extends Component {
 
 const mapStateToProps = state => {
     return {
-        ings: state.ingredients,
-        error: state.error,
-        price: state.totalPrice
+        ings: state.burgerBuilder.ingredients,
+        error: state.burgerBuilder.error,
+        price: state.burgerBuilder.totalPrice
     }
 }
 
