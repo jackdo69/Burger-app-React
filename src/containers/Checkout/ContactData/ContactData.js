@@ -147,6 +147,7 @@ class ContactData extends Component {
             ...this.state.orderForm
         }
         const updatedFormElement = { ...updatedOrderForm[inputIdentifier] };
+
         updatedFormElement.value = event.target.value;
         updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
         updatedFormElement.touched = true;
@@ -156,7 +157,8 @@ class ContactData extends Component {
         for (let inputIdentifier in updatedOrderForm) {
             formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid;
         }
-
+        console.log(updatedFormElement);
+        
         this.setState({ orderForm: updatedOrderForm, formIsValid: formIsValid })
     }
 
@@ -182,7 +184,7 @@ class ContactData extends Component {
                     changed={(event) => this.inputChangedHandler(event, formElement.id)} />
             ))}
             <Button
-
+                disabled={!this.state.formIsValid}
                 btnType="Success">ORDER </Button>
         </form>);
         if (this.props.loading) {
